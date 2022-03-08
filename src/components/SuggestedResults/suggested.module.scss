@@ -1,0 +1,26 @@
+.suggested {
+    &-results {
+        padding: 20px;
+        width: calc(60% + 30px);
+
+        .__title {
+            padding: 8px 20px;
+            text-transform: uppercase;
+            font-size: 14px;
+            font-weight: 600;
+            color: grey;
+        }
+    }
+
+    &-lists {
+        .__list {
+            padding: 8px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: rgba(66, 133, 244, 0.11);
+            }
+        }
+    }
+}
