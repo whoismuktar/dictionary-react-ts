@@ -10,17 +10,19 @@ const useFetch = (url: Req["url"]) => {
     const [loading, setLoading] = useState(false)
 
     useEffect(() => {
+        setLoading(true)
+        
         fetch(url)
             .then((res) => res.json())
             .then((data) => {
-                return setData(data)
+                setData(data)
             }).catch((err) => {
-                return setDataErr(err)
+                setDataErr(err)
             }).finally(() => {
-                return setLoading(false)
+                setLoading(false)
             })
-    }, [url]);
-
+        }, [url]);
+        
     return {data, dataErr, loading}
 }
 
