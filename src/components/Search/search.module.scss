@@ -1,0 +1,27 @@
+.search {
+    &-wrapper {
+        min-height: 80vh;
+    }
+
+    &-input {
+        height: 70px;
+        width: 60%;
+        padding: 10px 20px;
+        border-radius: 20px;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        outline: 0;
+    }
+    &-btn {
+        padding: 10px 20px;
+        background-color: #4285F4;
+        color: #ffffff;
+        font-weight: 600;
+        height: 70px;
+        width: 120px;
+        padding: 10px 20px;
+        border-radius: 20px;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+}
