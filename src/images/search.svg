@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="88px" height="87px" viewBox="0 0 88 87" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>search</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="search" transform="translate(3.500000, 3.000000)" stroke="#000000" stroke-width="6">
+            <line x1="81" y1="81" x2="58.3388672" y2="58.3388672" id="Path"></line>
+            <circle id="Oval" cx="33" cy="33" r="33"></circle>
+        </g>
+    </g>
+</svg>
