@@ -1,10 +1,15 @@
 .suggested {
+    transition: ease-in-out;
+
     &-results {
         padding: 20px;
-        width: calc(60% + 30px);
+        width: 100%;
+        display: block;
+        visibility: visible;
+        transition: visibility 0s, opacity 0.5s linear;
+        padding: 8px 28px;
 
         .__title {
-            padding: 8px 20px;
             text-transform: uppercase;
             font-size: 14px;
             font-weight: 600;
@@ -14,7 +19,6 @@
 
     &-lists {
         .__list {
-            padding: 8px 20px;
             border-radius: 4px;
             cursor: pointer;
 
