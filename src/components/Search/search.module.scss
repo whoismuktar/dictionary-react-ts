@@ -2,10 +2,26 @@
     &-wrapper {
         min-height: 80vh;
     }
+    &-parent {
+        border-radius: 20px;
+        max-width: 65%;
+        transition: ease-in-out;
+    }
+
+    &-input-wrapper {
+        display: flex;
+        width: 100%;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    &-icon {
+        filter: opacity(0.4)
+    }
 
     &-input {
         height: 70px;
-        width: 60%;
+        width: 100%;
         padding: 10px 20px;
         border-radius: 20px;
         border-top-right-radius: 0;
