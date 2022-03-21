@@ -9,7 +9,7 @@ export default function Search() {
   const {data, dataErr, loading} = useFetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${query}`)
   const [searchFocused, setSearchFocused]  = useState(false)
   const onSearchFocus = () => setSearchFocused(true)
-  // const onSearchBlur = () => setSearchFocused(false)
+  const onSearchBlur = () => setSearchFocused(false)
   
   const searchIcon = document.getElementById("searchIcon")
   searchIcon?.addEventListener("contextmenu", e => e.preventDefault())
@@ -19,10 +19,10 @@ export default function Search() {
       <div className={`container absolute top-1/4 align-center box-shadow2 ${styles["search-parent"]}`}>
         <div className={`text-center ${styles["search-input-wrapper"]}`}>
           <img src={SearchIcon} width="30" id='searchIcon' className={`icon ${styles["search-icon"]}`} alt="search icon" />
-          <input type="search" autoComplete='off' id='search-input' className={`${styles["search-input"]}`} placeholder='Search Word' onFocus={onSearchFocus} value={query} onChange={(e) => setQuery(e.target.value)} />
+          <input type="search" autoComplete='off' id='search-input' className={`${styles["search-input"]}`} placeholder='Search Word' onFocus={onSearchFocus} onBlur={onSearchBlur} value={query} onChange={(e) => setQuery(e.target.value)} />
 
         </div>
-        {searchFocused && <SuggestedResults loading={loading} data={data} />}
+        {searchFocused && <SuggestedResults loading={loading} data={data} dataErr={dataErr} />}
       </div>
     </div>
   )
