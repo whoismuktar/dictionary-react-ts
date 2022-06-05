@@ -6,11 +6,11 @@ import SearchIcon from "../../images/search.svg"
 
 export default function Search() {
   const [query, setQuery] = useState("")
-  const {data, dataErr, loading} = useFetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${query}`)
-  const [searchFocused, setSearchFocused]  = useState(false)
+  const { data, dataErr, loading } = useFetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${query}`)
+  const [searchFocused, setSearchFocused] = useState(false)
   const onSearchFocus = () => setSearchFocused(true)
   const onSearchBlur = () => setSearchFocused(false)
-  
+
   const searchIcon = document.getElementById("searchIcon")
   searchIcon?.addEventListener("contextmenu", e => e.preventDefault())
 
