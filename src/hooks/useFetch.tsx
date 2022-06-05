@@ -5,11 +5,13 @@ interface Req {
 }
 
 const useFetch = (url: Req["url"]) => {
-    const [data, setData] = useState(null)
+    const [data, setData] = useState([])
     const [dataErr, setDataErr] = useState(null)
     const [loading, setLoading] = useState(false)
 
-    useEffect(() => {
+    useEffect(() => {        
+        if (!url) return
+
         setLoading(true)
         
         fetch(url)
