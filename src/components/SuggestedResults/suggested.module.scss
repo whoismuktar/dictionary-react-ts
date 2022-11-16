@@ -15,6 +15,10 @@
             font-weight: 600;
             color: grey;
         }
+        .__list {
+            cursor: pointer;
+            text-transform: capitalize;
+        }
     }
 
     &-lists {
