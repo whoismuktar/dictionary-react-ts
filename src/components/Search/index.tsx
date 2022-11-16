@@ -83,7 +83,7 @@ export default function Search() {
           <div>123</div>
         )} */}
         {searchFocused && (
-          <SuggestedResults loading={loading} data={data} dataErr={dataErr} />
+          <SuggestedResults loading={loading} data={data} dataErr={dataErr} query={query} />
         )}
       </div>
 

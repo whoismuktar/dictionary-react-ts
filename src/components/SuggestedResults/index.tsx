@@ -3,15 +3,17 @@ import styles from "./suggested.module.scss";
 
 interface Props {
   loading: boolean;
-  data: unknown;
+  data: object[];
   dataErr: unknown;
+  query: string;
 }
 interface Result {
   word: string;
 }
 
 const SuggestedResults = (props: Props) => {
-  const { loading, data, dataErr } = props;
+  const { loading, data, dataErr, query } = props;
+  
   const [resultFound, setResultFound] = useState<number>(0);
   const [resultLen, setResultLen] = useState<number>(0);
 
@@ -19,15 +21,28 @@ const SuggestedResults = (props: Props) => {
     JSON.parse(localStorage.getItem("recentSearches") as string) || [];
   const [recentSearches, setRecentSearches] = useState(getRecentSearches);
 
-  const openKeyword = (result:Result) => {
-    setRecentSearches([...recentSearches, ...[result.word]]);
+  const saveLocalStorage = () => {
     localStorage.setItem("recentSearches", JSON.stringify(recentSearches))
+    console.log("local storage done");
   }
+
+  const openKeyword = (result: Result) => {
+    console.log("lastSearch", query);
+
+    const isDuplicate = recentSearches.includes(query);
+    console.log("isDuplicate", isDuplicate);
+
+    if (!isDuplicate) {
+      setRecentSearches([...recentSearches, ...[result.word]]);
+      saveLocalStorage()
+    }
+  };
 
   useEffect(() => {
     setResultFound((data as []).length);
     setResultLen(Object.keys(data as object).length);
     // setRecentSearches([...recentSearches, ...[data]]);
+    console.log({ data });
     console.log({ recentSearches });
 
     // localStorage.setItem("recentSearches", JSON.stringify(recentSearches))
