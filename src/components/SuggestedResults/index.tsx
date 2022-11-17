@@ -23,18 +23,23 @@ const SuggestedResults = (props: Props) => {
   const [recentSearches, setRecentSearches] = useState(getRecentSearches);
 
   const saveLocalStorage = () => {
+    console.log("recentSearches: ", recentSearches);
+    
     localStorage.setItem("recentSearches", JSON.stringify(recentSearches))
     console.log("local storage done");
   }
 
   const openKeyword = (result: Result["word"]) => {
-    console.log("lastSearch", query);
+    // console.log("lastSearch", query);
 
-    const isDuplicate = recentSearches.includes(query);
-    console.log("isDuplicate", isDuplicate);
+    const isDuplicate = getRecentSearches.includes(query);
+    // console.log("isDuplicate", isDuplicate);
 
     if (!isDuplicate) {
-      setRecentSearches([...recentSearches, ...[result]]);
+      setRecentSearches([...recentSearches, result]);
+      // setRecentSearches((recentSearches: []) => ([...recentSearches, result]));
+
+      console.log("1 recentSearches: ", recentSearches);
       saveLocalStorage()
     }
   };
@@ -43,10 +48,14 @@ const SuggestedResults = (props: Props) => {
     setResultFound((data as []).length);
     setResultLen(Object.keys(data as object).length);
     // setRecentSearches([...recentSearches, ...[data]]);
-    console.log({ data });
-    console.log({ recentSearches });
+    // console.log({ data });
+    // console.log({ recentSearches });
 
-    // localStorage.setItem("recentSearches", JSON.stringify(recentSearches))
+    // check and register recentSearcches in localStorage
+    const recentSearches = localStorage.getItem("recentSearches")
+    if (recentSearches === null) {
+      localStorage.setItem("recentSearches", JSON.stringify([]))
+    }
   }, [data]);
 
 
