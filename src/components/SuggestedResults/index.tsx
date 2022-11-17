@@ -27,14 +27,14 @@ const SuggestedResults = (props: Props) => {
     console.log("local storage done");
   }
 
-  const openKeyword = (result: Result) => {
+  const openKeyword = (result: Result["word"]) => {
     console.log("lastSearch", query);
 
     const isDuplicate = recentSearches.includes(query);
     console.log("isDuplicate", isDuplicate);
 
     if (!isDuplicate) {
-      setRecentSearches([...recentSearches, ...[result.word]]);
+      setRecentSearches([...recentSearches, ...[result]]);
       saveLocalStorage()
     }
   };
@@ -52,9 +52,9 @@ const SuggestedResults = (props: Props) => {
 
   const RecentSearches = (
     <ul className={styles["suggested-lists recentSearches"]}>
-      {(getRecentSearches as []).map((keyword: Result, i: number) => {
+      {(getRecentSearches as []).map((keyword: Result["word"], i: number) => {
         return (
-          <li key={i} className={styles["__list"]}>
+          <li key={i} className={styles["__list"]} onClick={() => openKeyword(keyword)}>
             {keyword}
           </li>
         );
@@ -66,7 +66,7 @@ const SuggestedResults = (props: Props) => {
     <ul className={styles["suggested-lists results"]}>
       {(data as []).map((result: Result, i: number) => {
         return (
-          <li key={i} className={styles["__list"]} onClick={() => openKeyword(result)}>
+          <li key={i} className={styles["__list"]} onClick={() => openKeyword(result.word)}>
             {result.word}
           </li>
         );
