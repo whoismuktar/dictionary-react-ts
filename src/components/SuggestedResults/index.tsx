@@ -19,6 +19,7 @@ const SuggestedResults = (props: Props) => {
 
   const getRecentSearches =
     JSON.parse(localStorage.getItem("recentSearches") as string) || [];
+
   const [recentSearches, setRecentSearches] = useState(getRecentSearches);
 
   const saveLocalStorage = () => {
@@ -48,16 +49,13 @@ const SuggestedResults = (props: Props) => {
     // localStorage.setItem("recentSearches", JSON.stringify(recentSearches))
   }, [data]);
 
-  // console.log("active", loading)
-  // console.log("data", data)
-  // console.log("dataErr", dataErr)
 
   const RecentSearches = (
     <ul className={styles["suggested-lists recentSearches"]}>
-      {(recentSearches as []).map((search: Result, i: number) => {
+      {(getRecentSearches as []).map((keyword: Result, i: number) => {
         return (
           <li key={i} className={styles["__list"]}>
-            {search.word}
+            {keyword}
           </li>
         );
       })}
@@ -106,6 +104,7 @@ const SuggestedResults = (props: Props) => {
         ) : (
           // <div>No Result found {resultLen}</div>
           RecentSearches
+          // <div>...recent</div>
         )
         // <div>
         //   { data === [] && "Recents Searches...."}
